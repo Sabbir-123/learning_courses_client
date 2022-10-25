@@ -1,3 +1,8 @@
+import Blogs from "../components/Blogs";
+import Courses from "../components/Courses";
+import FAQ from "../components/FAQ";
+import LogIn from "../components/LogIn";
+import Register from "../components/Register";
 import Sidebar from "../components/sidebar";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -16,9 +21,29 @@ const router = createBrowserRouter([{
             loader: ()=> fetch('http://localhost:5000/blockchain')
         },
         {
-            path: '/category/:id',
-            element: <Sidebar></Sidebar>,
-            loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+            path: '/home', 
+            element: <Home></Home>,
+            loader: ()=> fetch('http://localhost:5000/blockchain')
+        },
+        {
+            path: '/courses',
+            element: <Courses></Courses>,
+        },
+        {
+            path: '/register',
+            element: <Register></Register>,
+        },
+        {
+            path: '/login',
+            element: <LogIn></LogIn>,
+        },
+        {
+            path: '/blog',
+            element: <Blogs></Blogs>,
+        },
+        {
+            path: '/faq',
+            element: <FAQ></FAQ>,
         },
 
 

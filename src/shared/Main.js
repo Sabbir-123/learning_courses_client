@@ -6,14 +6,9 @@ import Sidebar from "../components/sidebar";
 
 const Main = () => {
   return (
-    <div className="App">
+    <div>
       <Nav></Nav>
-      <div>
-        <div>
-          <Outlet></Outlet>
-        </div>
-        <Sidebar></Sidebar>
-      </div>
+      <Outlet></Outlet>
       <Footer></Footer>
     </div>
   );

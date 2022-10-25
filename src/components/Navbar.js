@@ -6,7 +6,7 @@ export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="px-4 bg-indigo-500 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
+    <div className="px-4 dark:bg-gray-900 dark:text-gray-100 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
         <Link
           to="/"
@@ -15,7 +15,7 @@ export const Nav = () => {
           className="inline-flex items-center"
         >
           <img className="h-14" src={blockchain} alt="" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-black uppercase">
+          <span className="ml-2 text-xl font-bold tracking-wide uppercase">
             Blockchain
           </span>
         </Link>
@@ -25,7 +25,7 @@ export const Nav = () => {
               to="/home"
               aria-label="Home"
               title="Home"
-              className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
               Home
             </Link>
@@ -35,7 +35,7 @@ export const Nav = () => {
               to="/courses"
               aria-label="courses"
               title="courses"
-              className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+              className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400"
             >
               <div className="relative py-3">
                 <p>Courses</p>
