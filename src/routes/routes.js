@@ -27,6 +27,7 @@ const router = createBrowserRouter([{
         },
         {
             path: '/courses',
+            loader: ()=>fetch(`https://assignment-10-server-sabbir-123.vercel.app/categories`),
             element: <Courses></Courses>,
         },
         {

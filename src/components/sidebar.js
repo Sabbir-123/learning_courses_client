@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({category}) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
