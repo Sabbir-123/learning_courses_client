@@ -1,12 +1,22 @@
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import { AuthContext } from '../contexts/AuthProvider';
 import app from '../firebase/firebase.init';
 
 const auth = getAuth(app)
 
 const LogIn = () => {
+    const navigate = useNavigate()
+    const [error, setError]= useState('');
+    const [userEmail, setUserEmail] = useState('')
+
+    const {signIn, 
+        resetPassword,  
+        signinGoogle,
+        signinGitHub
+    } = useContext(AuthContext)
 
     
 
@@ -17,8 +27,53 @@ const LogIn = () => {
         const password = form.password.value;
         console.log(email, password)
 
-        createUserWithEmailAndPassword(auth, email, password)
+        signIn(email, password)
+        .then(result=>{
+            const user = result.user;
+            console.log(user);
+            swal('User Logged In');
+            form.reset();
+            setError('');
+
+        })
+        .catch(error=>{
+            console.log(error)
+            setError(error.message)
+        })
+
+     
     }
+
+    const handleGoogleSignIn =()=>{
+        signinGoogle()
+        .then(result =>{
+          console.log(result.user);
+          swal('Google Log in Successful')
+          navigate('/courses')
+        })
+        .catch((error)=>{
+          swal(error.message)
+        })
+      }
+    
+      const handleGithublogin = ()=>{
+        signinGitHub()
+        .then(result =>{
+          console.log(result.user);
+          swal('GitHub Log in Successful')
+          navigate('/courses')
+        })
+        .catch((error)=>{
+          swal(error.message)
+        })
+      }
+
+    const resetPass =()=>{
+        resetPassword(userEmail)
+        .then(()=> swal('Reset link has been sent'))
+        .catch(error=> setError(error.message))
+    }
+
 
     
     return (
@@ -42,7 +97,7 @@ const LogIn = () => {
               Email address
             </label>
             <input
-              
+              onBlur={event => setUserEmail(event.target.value)}
               type='email'
               name='email'
               id='email'
@@ -58,7 +113,6 @@ const LogIn = () => {
               </label>
             </div>
             <input
-              // type={showPass ? 'text' : 'password'}
               type='password'
               name='password'
               id='password'
@@ -66,9 +120,6 @@ const LogIn = () => {
               className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
             />
 
-            {/* <button onClick={() => setShowPass(!showPass)}>
-              Show Password
-            </button> */}
           </div>
         </div>
 
@@ -83,11 +134,13 @@ const LogIn = () => {
       </form>
       <div className='space-y-1'>
         <button
+        onClick={resetPass}
           
           className='text-xs hover:underline text-gray-400'
         >
           Forgot password?
         </button>
+        <p>{error}</p>
       </div>
       <div className='flex items-center pt-4 space-x-1'>
         <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
@@ -98,7 +151,7 @@ const LogIn = () => {
       </div>
       <div className='flex justify-center space-x-4'>
         <button
-      
+            onClick={handleGoogleSignIn}
           aria-label='Log in with Google'
           className='p-3 rounded-sm'
         >
@@ -119,7 +172,9 @@ const LogIn = () => {
             <path d='M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z'></path>
           </svg>
         </button>
-        <button aria-label='Log in with GitHub' className='p-3 rounded-sm'>
+        <button
+        onClick={handleGithublogin}
+        aria-label='Log in with GitHub' className='p-3 rounded-sm'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 32 32'
@@ -134,7 +189,7 @@ const LogIn = () => {
         <Link to='/register' className='hover:underline text-gray-600'>
           Sign up
         </Link>
-        .
+        
       </p>
     </div>
   </div>

@@ -17,6 +17,7 @@ const Register = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -53,6 +54,9 @@ const Register = () => {
       swal('Google Log in Successful')
       navigate('/courses')
     })
+    .catch((error)=>{
+      swal(error.message)
+    })
   }
 
   const handleGithublogin = ()=>{
@@ -83,14 +87,27 @@ const Register = () => {
           >
             <div className="space-y-4">
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm">
+                <label htmlFor="name" className="block mb-2 text-sm">
                   Name
                 </label>
                 <input
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Enter Your Name Here"
+                  placeholder="Enter Your Full Name Here"
+                  className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
+                  data-temp-mail-org="0"
+                />
+              </div>
+              <div>
+                <label htmlFor="photoURL" className="block mb-2 text-sm">
+                  Photo URL
+                </label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  id="photoURL"
+                  placeholder="Enter Your Photo URL"
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900"
                   data-temp-mail-org="0"
                 />

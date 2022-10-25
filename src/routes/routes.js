@@ -1,7 +1,9 @@
 import Blogs from "../components/Blogs";
+import CourseDetails from "../components/CourseDetails";
 import Courses from "../components/Courses";
 import FAQ from "../components/FAQ";
 import LogIn from "../components/LogIn";
+import Premium from "../components/Premium";
 import Register from "../components/Register";
 import Sidebar from "../components/sidebar";
 
@@ -18,17 +20,22 @@ const router = createBrowserRouter([{
         {
             path: '/', 
             element: <Home></Home>,
-            loader: ()=> fetch('http://localhost:5000/blockchain')
+            loader: ()=> fetch('https://assignment-10-server-sabbir-123.vercel.app/blockchain')
         },
         {
             path: '/home', 
             element: <Home></Home>,
-            loader: ()=> fetch('http://localhost:5000/blockchain')
+            loader: ()=> fetch('https://assignment-10-server-sabbir-123.vercel.app/blockchain')
         },
         {
             path: '/courses',
-            loader: ()=>fetch(`https://assignment-10-server-sabbir-123.vercel.app/categories`),
+            loader: ()=>fetch(`https://assignment-10-server-sabbir-123.vercel.app/blockchain`),
             element: <Courses></Courses>,
+        },
+        {
+            path: '/blockchain/:id',
+            loader: ({params})=>fetch(`https://assignment-10-server-sabbir-123.vercel.app/blockchain/${params.id}`),
+            element: <CourseDetails></CourseDetails>,
         },
         {
             path: '/register',
@@ -45,6 +52,10 @@ const router = createBrowserRouter([{
         {
             path: '/faq',
             element: <FAQ></FAQ>,
+        },
+        {
+            path: '/premium',
+            element: <Premium></Premium>,
         },
 
 

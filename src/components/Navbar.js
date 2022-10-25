@@ -1,9 +1,22 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Tooltip } from "@mui/material";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 import blockchain from "../asstes/blockchain.png";
+import { AuthContext } from "../contexts/AuthProvider";
+import "./navbar.css";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { user, logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout()
+      .then(swal("User Logged Out"))
+      .catch((error) => swal(error.message));
+  };
+  console.log(user);
 
   return (
     <div className="px-4 dark:bg-gray-900 dark:text-gray-100 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
@@ -62,32 +75,77 @@ export const Nav = () => {
               FAQ
             </Link>
           </li>
+
+          {user?.email ? (
+            <>
+              <li>
+                <Link
+                  onClick={handleLogout}
+                  aria-label="logout"
+                  title="Logout"
+                  className="font-medium tracking-wide text-black-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Log Out
+                </Link>
+              </li>
+              <li>
+                <Tooltip
+                  className=" hover:cursor-pointer"
+                  title={user?.displayName}
+                >
+                  <img
+                    src={user?.photoURL}
+                    className="rounded h-12 image"
+                    alt=""
+                  />
+                </Tooltip>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link
+                  to="/register"
+                  aria-label="register"
+                  title="Regoster"
+                  className="font-medium tracking-wide text-black-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/login"
+                  aria-label="login"
+                  title="Login"
+                  className="font-medium tracking-wide text-black-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                >
+                  Log In
+                </Link>
+              </li>
+            </>
+          )}
+
           <li>
-            <Link
-              to="/register"
-              aria-label="register"
-              title="Regoster"
-              className="font-medium tracking-wide text-black-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            <label
+              htmlFor="Toggle1"
+              className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100"
             >
-              Register
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/login"
-              aria-label="login"
-              title="Login"
-              className="font-medium tracking-wide text-black-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Log In
-            </Link>
+              <span>Dark</span>
+              <span className="relative">
+                <input id="Toggle1" type="checkbox" className="hidden peer" />
+                <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 peer-checked:dark:bg-violet-400"></div>
+                <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800"></div>
+              </span>
+              <span>Light</span>
+            </label>
           </li>
         </ul>
         <div className="lg:hidden">
           <button
             aria-label="Open Menu"
             title="Open Menu"
-            className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
+            className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:dark:bg-gray-900 focus:dark:bg-gray-900"
             onClick={() => setIsMenuOpen(true)}
           >
             <svg className="w-5 text-black-600" viewBox="0 0 24 24">
@@ -107,7 +165,7 @@ export const Nav = () => {
           </button>
           {isMenuOpen && (
             <div className="absolute top-0 left-0 w-full">
-              <div className="p-5 bg-indigo-400 border rounded shadow-sm">
+              <div className="p-5 dark:bg-gray-900 border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link

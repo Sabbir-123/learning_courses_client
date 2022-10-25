@@ -5,7 +5,7 @@ const Sidebar = ({category}) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("https://assignment-10-server-sabbir-123.vercel.app/blockchain")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -21,13 +21,13 @@ const Sidebar = ({category}) => {
         <div>
           <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
           <span className="flex items-center space-x-1">
-            <a
+            <Link
               rel="noopener noreferrer"
-              href="#"
+              to="/profile"
               className="text-xs hover:underline dark:text-gray-400"
             >
               View profile
-            </a>
+            </Link>
           </span>
         </div>
       </div>
@@ -46,7 +46,7 @@ const Sidebar = ({category}) => {
            <span>
                 {categories.map((category) => (
                   <button type="button" className="px-8 py-3 w-32 font-semibold border block rounded dark:border-gray-100 dark:text-gray-100" key={category.id}>
-                    <Link to={`/category/${category.id}`}>{category.name}</Link>
+                    <Link to={`/blockchain/${category._id}`}>{category.title}</Link>
                   </button>
                 ))}
               </span>

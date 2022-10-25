@@ -1,0 +1,6 @@
+/* .myDIV{
+    display: none;
+}
+img:hover + .myDIV{
+    display: block;
+} */
