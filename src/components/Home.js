@@ -19,7 +19,7 @@ const Home = () => {
                 	</div>
 		</div>
 	</div>
-	<img src={Bluea} alt="" className="w-4/6 mx-auto hover:animate-spin hover:w-3/6 mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 dark:bg-gray-500" />
+	<img src={Bluea} alt="" className="w-4/6 mx-auto hover:animate-bounce hover:w-3/6 mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 dark:bg-gray-500" />
 </section>
   );
 };

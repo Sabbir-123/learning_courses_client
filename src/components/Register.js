@@ -1,19 +1,23 @@
 import React, { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Register = () => {
 
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const { user, 
     createUser,
-     updateName, 
+    updateUserProfile,
      verifyEmail, 
      signinGoogle,
      signinGitHub
     } = useContext(AuthContext);
-  const handleSubmit = (event) => {
+  
+  
+    const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -24,28 +28,34 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate('/courses')
-        updateName(name)
-          .then(() => {
-            swal("Name has been Updated");
-            verifyEmail()
-              .then(() => {
-                swal("Check Email for verification");
-              })
-              .catch((error) => {
-                swal(error.message);
-              });
-          })
-          .catch((error) => {
-            swal(error.message);
-          });
+        form.reset();
+        handleUpdateUserProfile(name, photoURL)
       })
       .catch((error) => console.log(error));
 
-    console.log(name, email, password);
-  // Google Signin
+
    
   };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+        displayName: name,
+        photoURL: photoURL
+    }
+    updateUserProfile(profile)
+    .then(() => {swal("Profile has been Updated"); })
+    .catch(error => swal(error.message));
+
+    verifyEmail()
+    .then(() => {
+      swal("Check Email for verification");
+      navigate(from, { replace: true })
+    })
+    .catch((error) => {
+      swal(error.message);
+    });
+    }
+
 
   const handleGoogleSignIn =()=>{
     signinGoogle()

@@ -6,6 +6,7 @@ import LogIn from "../components/LogIn";
 import Premium from "../components/Premium";
 import Register from "../components/Register";
 import Sidebar from "../components/sidebar";
+import PrivateRoute from "../shared/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../components/Home");
@@ -54,8 +55,9 @@ const router = createBrowserRouter([{
             element: <FAQ></FAQ>,
         },
         {
-            path: '/premium',
-            element: <Premium></Premium>,
+            path: '/premium/:id',
+            loader: ({params})=>fetch (`https://assignment-10-server-sabbir-123.vercel.app/premium/${params.id}`),
+            element: <PrivateRoute><Premium></Premium></PrivateRoute>,
         },
 
 

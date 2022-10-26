@@ -36,7 +36,7 @@ const CourseDetails = () => {
         <p className="dark:text-gray-100 mt-5">{details}</p>
 
         <div className="mt-6 mb-2">
-		<Link to={'/premium'}>
+		<Link to={`/premium/${_id}`}>
         <button className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black focus:shadow-outline focus:outline-none">Get Premium Access</button>
 
         </Link>

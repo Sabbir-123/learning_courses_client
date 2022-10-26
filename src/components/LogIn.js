@@ -1,16 +1,21 @@
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../contexts/AuthProvider';
 import app from '../firebase/firebase.init';
 
-const auth = getAuth(app)
+const auth = getAuth(app);
+
 
 const LogIn = () => {
-    const navigate = useNavigate()
+    
     const [error, setError]= useState('');
     const [userEmail, setUserEmail] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const {signIn, 
         resetPassword,  
@@ -32,6 +37,7 @@ const LogIn = () => {
             const user = result.user;
             console.log(user);
             swal('User Logged In');
+            navigate(from, {replace: true});
             form.reset();
             setError('');
 
@@ -49,7 +55,7 @@ const LogIn = () => {
         .then(result =>{
           console.log(result.user);
           swal('Google Log in Successful')
-          navigate('/courses')
+          navigate(from, {replace: true});
         })
         .catch((error)=>{
           swal(error.message)
@@ -61,7 +67,7 @@ const LogIn = () => {
         .then(result =>{
           console.log(result.user);
           swal('GitHub Log in Successful')
-          navigate('/courses')
+          navigate(from, {replace: true});
         })
         .catch((error)=>{
           swal(error.message)

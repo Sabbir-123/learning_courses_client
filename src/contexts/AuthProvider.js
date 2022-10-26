@@ -11,15 +11,17 @@ const AuthProvider = ({children}) => {
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider();
     const [user, setUser] = useState({})
-
+    const [loading, setLoading] = useState(true)
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
       }
-    const updateName = name =>{
-        return updateProfile(auth.currentUser, {displayName: name})
+      const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);
     }
     
     const signIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -28,23 +30,31 @@ const AuthProvider = ({children}) => {
     }
 
     const resetPassword = email => {
+        setLoading(true);
         return sendPasswordResetEmail(auth, email)
       }
 
     const signinGoogle=()=>{
+        setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 
     const signinGitHub=()=>{
+        setLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
 
     const logout =()=>{
+        setLoading(true);
         return signOut(auth)
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          setUser(currentUser)
+            // if(currentUser === null || currentUser.emailVerified){
+            //     setUser(currentUser);
+            // }
+            setUser(currentUser);
+            setLoading(false);
         })
     
         return () => {
@@ -53,8 +63,9 @@ const AuthProvider = ({children}) => {
       }, [])
   const authDetails = {
     user, 
+    loading,
     createUser, 
-    updateName, 
+    updateUserProfile, 
     verifyEmail,
     signinGoogle,
     signinGitHub,
