@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import blockchain from "../asstes/blockchain.png";
 import { AuthContext } from "../contexts/AuthProvider";
-import "./navbar.css";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

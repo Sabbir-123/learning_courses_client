@@ -36,15 +36,26 @@ const FAQ = () => {
                 What is the Applications of Blockchain?
               </summary>
               <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-              In Finance: <br />
-Blockchain technology provides hands-down efficiency when it comes to tracking financial properties. It provides a transparent ledger system, making it even easier to track and tackle the inflow and outflow of cash.
- <br /> <br />
-In Cloud Storage: <br />
-With the successful implementation of blockchain technology, cloud storage can become extra secure against the attacks of hackers. It reduces unauthorized data tampering while encrypting the data using cryptography.
-<br /> <br />
-In Cyber Security: <br /> 
-As discussed earlier, blockchain uses principles of ledger technology and decentralization, making it a perfect fit to fortify cyber security. It helps secure private messaging by forming an integrating API framework that eventually enables cross-messenger communication proficiency.
-<br />  </p>
+                In Finance: <br />
+                Blockchain technology provides hands-down efficiency when it
+                comes to tracking financial properties. It provides a
+                transparent ledger system, making it even easier to track and
+                tackle the inflow and outflow of cash.
+                <br /> <br />
+                In Cloud Storage: <br />
+                With the successful implementation of blockchain technology,
+                cloud storage can become extra secure against the attacks of
+                hackers. It reduces unauthorized data tampering while encrypting
+                the data using cryptography.
+                <br /> <br />
+                In Cyber Security: <br />
+                As discussed earlier, blockchain uses principles of ledger
+                technology and decentralization, making it a perfect fit to
+                fortify cyber security. It helps secure private messaging by
+                forming an integrating API framework that eventually enables
+                cross-messenger communication proficiency.
+                <br />{" "}
+              </p>
             </details>
           </div>
         </div>
