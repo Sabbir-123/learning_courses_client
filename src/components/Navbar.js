@@ -19,7 +19,7 @@ export const Nav = () => {
   console.log(user);
 
   return (
-    <div className="px-4 dark:bg-gray-900 dark:text-gray-100 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
+    <div className="px-4 dark:bg-gray-900 dark:text-gray-100 py-3 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
         <Link
           to="/"

@@ -12,7 +12,7 @@ const Premium = () => {
   }
   
   return (
-    <div>
+    <div className="dark:bg-gray-900 grid justify-center pt-5" >
       <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-xl font-semibold">Your cart</h2>
         <ul className="flex flex-col divide-y divide-gray-700">
@@ -43,7 +43,7 @@ const Premium = () => {
         <div className="space-y-1 text-right">
           <p>
             Total amount:
-            <span className="font-semibold">{price}</span>
+            <span className="font-bold">{price}</span>
           </p>
           <p className="text-sm dark:text-gray-400">
             Not including taxes and shipping costs
@@ -55,8 +55,8 @@ const Premium = () => {
             type="button"
             className="px-6 py-2 border rounded-md dark:border-violet-400"
           >
-            Back
-            <span className="sr-only sm:not-sr-only">to shop</span>
+            Go Back
+           
           </button></Link>
           <button
           onClick={handleCheckout}

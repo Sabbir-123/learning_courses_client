@@ -11,26 +11,6 @@ const Sidebar = ({category}) => {
   }, []);
   return (
     <div className="h-full p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100">
-      
-      <div className="flex items-center p-2 space-x-4">
-        <img
-          src="https://source.unsplash.com/100x100/?portrait"
-          alt=""
-          className="w-12 h-12 rounded-full dark:bg-gray-500"
-        />
-        <div>
-          <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
-          <span className="flex items-center space-x-1">
-            <Link
-              rel="noopener noreferrer"
-              to="/profile"
-              className="text-xs hover:underline dark:text-gray-400"
-            >
-              View profile
-            </Link>
-          </span>
-        </div>
-      </div>
       <div className="divide-y divide-gray-700">
       <h1>Category : {categories.length} </h1>
         <ul className="pt-2 pb-4 space-y-1 text-sm">
