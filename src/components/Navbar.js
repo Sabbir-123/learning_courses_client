@@ -127,8 +127,13 @@ export const Nav = () => {
           )}
 
           <li className="flex">
-           <label className="mr-2">{theme === "light" ? "Light" : "Dark"}</label>
-           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}></ReactSwitch>
+            <label className="mr-2">
+              {theme === "light" ? "Light" : "Dark"}
+            </label>
+            <ReactSwitch
+              onChange={toggleTheme}
+              checked={theme === "dark"}
+            ></ReactSwitch>
           </li>
         </ul>
         <div className="lg:hidden">
@@ -240,6 +245,15 @@ export const Nav = () => {
                       >
                         Log In
                       </Link>
+                    </li>
+                    <li className="flex">
+                      <label className="mr-2">
+                        {theme === "light" ? "Light" : "Dark"}
+                      </label>
+                      <ReactSwitch
+                        onChange={toggleTheme}
+                        checked={theme === "dark"}
+                      ></ReactSwitch>
                     </li>
                   </ul>
                 </nav>
