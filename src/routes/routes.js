@@ -21,12 +21,10 @@ const router = createBrowserRouter([{
         {
             path: '/', 
             element: <Home></Home>,
-            loader: ()=> fetch('https://assignment-10-server-sabbir-123.vercel.app/blockchain')
         },
         {
             path: '/home', 
             element: <Home></Home>,
-            loader: ()=> fetch('https://assignment-10-server-sabbir-123.vercel.app/blockchain')
         },
         {
             path: '/courses',

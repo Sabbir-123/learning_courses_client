@@ -4,7 +4,7 @@ import blockchain from "../asstes/blockchain.png";
 
 const Footer = () => {
   return (
-    <footer className='px-4 divide-y dark:bg-gray-900  text-gray-100'>
+    <footer className='px-4 divide-y  footer'>
       <div className='container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0'>
         <div className='lg:w-1/3'>
           <Link className='flex justify-center space-x-3 lg:justify-start'>
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div className='grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4'>
           <div className='space-y-3'>
-            <h3 className='tracking-wide uppercase text-gray-50'>Product</h3>
+            <h3 className='tracking-wide uppercase'>Product</h3>
             <ul className='space-y-1'>
               <li>
                 <Link to='/blog'>Features</Link>
@@ -33,7 +33,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className='space-y-3'>
-            <h3 className='tracking-wide uppercase text-gray-50'>Block chain</h3>
+            <h3 className='tracking-wide uppercase '>Block chain</h3>
             <ul className='space-y-1'>
               <li>
                 <Link to='/blog'>Privacy</Link>
@@ -44,7 +44,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className='space-y-3'>
-            <h3 className='uppercase text-gray-50'>Developers</h3>
+            <h3 className='uppercase '>Developers</h3>
             <ul className='space-y-1'>
               <li>
                 <Link to='/blog'>Public API</Link>
@@ -58,7 +58,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className='space-y-3'>
-            <div className='uppercase text-gray-50'>Social media</div>
+            <div className='uppercase '>Social media</div>
             <div className='flex justify-start space-x-3'>
               <Link
                 to='/blog'
@@ -105,7 +105,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='py-6 text-sm text-center text-gray-400'>
+      <div className='py-6 text-sm text-center'>
         © 2022 Blockchain Inc. All rights reserved to Md Sabbir Ahmed.
       </div>
     </footer>

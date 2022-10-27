@@ -3,7 +3,7 @@ import React from "react";
 const FAQ = () => {
   return (
     <div>
-      <section className="dark:bg-gray-800 dark:text-gray-100">
+      <section>
         <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
           <h2 className="text-2xl font-semibold sm:text-4xl">
             Frequently Asked Questions
@@ -22,7 +22,7 @@ const FAQ = () => {
               <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
                 Why are you learnig Blockchain Technology?
               </summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
+              <p className="px-4 py-6 pt-0 ml-4 -mt-4">
                 <ol>
                   <li>1. The Blockchain Is Diverse</li>
                   <li>2. Web 3.0 Is Based on the Blockchain Technology</li>
@@ -35,7 +35,7 @@ const FAQ = () => {
               <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
                 What is the Applications of Blockchain?
               </summary>
-              <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
+              <p className="px-4 py-6 pt-0 ml-4 -mt-4 ">
                 In Finance: <br />
                 Blockchain technology provides hands-down efficiency when it
                 comes to tracking financial properties. It provides a

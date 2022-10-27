@@ -17,10 +17,10 @@ const CourseDetails = () => {
         )
   }
   return (
-    <div className="grid justify-center dark:bg-gray-700">
-      <div className="max-w-xl p-10 mt-6 mb-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50" id="content">
+    <div className="grid justify-center ">
+      <div className="max-w-xl p-10 mt-6 mb-6 rounded-md shadow-md dark:bg-gray-900 " id="content">
         <div className="mt-6 mb-2 grid justify-end ">
-          <button onClick={generatePDF} type="primary" className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black focus:shadow-outline focus:outline-none">
+          <button onClick={generatePDF} type="primary" className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black focus:shadow-outline focus:outline-none">
             Download PDF
           </button>
         </div>
@@ -33,11 +33,11 @@ const CourseDetails = () => {
           className="object-cover object-center w-full object-fill  rounded-md  dark:bg-gray-500"
         />
 
-        <p className="dark:text-gray-100 mt-5">{details}</p>
+        <p className=" mt-5">{details}</p>
 
         <div className="mt-6 mb-2 grid justify-center">
 		<Link to={`/premium/${_id}`}>
-        <button className="inline-flex items-center  w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black focus:shadow-outline focus:outline-none">Get Premium Access</button>
+        <button className="inline-flex items-center  w-full h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black focus:shadow-outline focus:outline-none">Get Premium Access</button>
 
         </Link>
         

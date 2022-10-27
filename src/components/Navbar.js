@@ -4,11 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import blockchain from "../asstes/blockchain.png";
 import { AuthContext } from "../contexts/AuthProvider";
+import ReactSwitch from "react-switch";
 
 export const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout, theme, toggleTheme } = useContext(AuthContext);
 
   const handleLogout = () => {
     logout()
@@ -18,7 +19,7 @@ export const Nav = () => {
   console.log(user);
 
   return (
-    <div className="px-4 dark:bg-gray-900 dark:text-gray-100 py-3 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
+    <div className="px-4 navbar dark:text-gray-100 py-3 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-full md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
         <Link
           to="/"
@@ -125,19 +126,9 @@ export const Nav = () => {
             </>
           )}
 
-          <li>
-            <label
-              htmlFor="Toggle1"
-              className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-100"
-            >
-              <span>Dark</span>
-              <span className="relative">
-                <input id="Toggle1" type="checkbox" className="hidden peer" />
-                <div className="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 peer-checked:dark:bg-violet-400"></div>
-                <div className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800"></div>
-              </span>
-              <span>Light</span>
-            </label>
+          <li className="flex">
+           <label className="mr-2">{theme === "light" ? "Light" : "Dark"}</label>
+           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"}></ReactSwitch>
           </li>
         </ul>
         <div className="lg:hidden">
