@@ -18,9 +18,9 @@ const CourseDetails = () => {
   }
   return (
     <div className="grid justify-center ">
-      <div className="max-w-xl p-10 mt-6 mb-6 rounded-md shadow-md dark:bg-gray-900 " id="content">
+      <div className="max-w-xl text-gray-400 p-10 mt-6 mb-6 rounded-md shadow-md dark:bg-gray-900 " id="content">
         <div className="mt-6 mb-2 grid justify-end ">
-          <button onClick={generatePDF} type="primary" className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black focus:shadow-outline focus:outline-none">
+          <button onClick={generatePDF} type="primary" className="inline-flex  items-center justify-center w-full h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md md:w-auto bg-indigo-900 hover:bg-black hover:text-white  focus:shadow-outline focus:outline-none">
             Download PDF
           </button>
         </div>
